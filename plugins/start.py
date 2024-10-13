@@ -61,7 +61,7 @@ async def start_command(client: Client, message: Message):
             await update_verify_status(id, is_verified=True, verified_time=time.time())
             if verify_status["link"] == "":
                 reply_markup = None
-            await message.reply(f"Your token successfully verified and valid for: 6 Hour.\n\nNow Enjoy For 1 Day.\n\nMust Visit : @Adult_Flux and @Anime_Flux For Daily Content.", reply_markup=reply_markup, protect_content=True, quote=True)
+            await message.reply(f"Your token successfully verified and valid for: {get_exp_time(VERIFY_EXPIRE)}.\n\nNow Enjoy Unlimited Access For {get_exp_time(VERIFY_EXPIRE)}.\n\nMust Visit : @Adult_Flux For Daily Content.", reply_markup=reply_markup, protect_content=True, quote=True)
 
         elif len(message.text) > 7 and verify_status['is_verified']:
             try:
@@ -91,7 +91,7 @@ async def start_command(client: Client, message: Message):
                     ids = [int(int(argument[1]) / abs(client.db_channel.id))]
                 except:
                     return
-            temp_msg = await message.reply("Ruk Jao Tharki Insaan...")
+            temp_msg = await message.reply("Ruk jaiye ji ...")
             try:
                 messages = await get_messages(client, ids)
             except:
@@ -149,7 +149,7 @@ async def start_command(client: Client, message: Message):
                     [InlineKeyboardButton("Click Here To Download", url=link)],
                     [InlineKeyboardButton('How To Use The Bot ?', url=full_tut_url)]
                 ]
-                await message.reply(f"Your Ads token is expired, refresh your token and try again.\n\nToken Timeout: {get_exp_time(VERIFY_EXPIRE)}\n\nWhat is the token?\n\nThis is an ads token. If you pass 1 ad, you can use the bot for 6 Hour after passing the ad.", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
+                await message.reply(f"Your Ads token is expired, refresh your token and try again.\n\nToken Timeout: {get_exp_time(VERIFY_EXPIRE)}\n\nWhat is the token?\n\nThis is an ads token. If you pass 1 ad, you can enjoy unlimited files access for {get_exp_time(VERIFY_EXPIRE)} after passing the ad.", reply_markup=InlineKeyboardMarkup(btn), protect_content=False, quote=True)
 
 # ... (rest of the code remains unchanged))
 
